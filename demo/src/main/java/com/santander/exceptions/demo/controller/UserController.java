@@ -2,6 +2,7 @@ package com.santander.exceptions.demo.controller;
 
 import com.santander.exceptions.demo.dto.StatusDto;
 import com.santander.exceptions.demo.dto.UserDto;
+import com.santander.exceptions.demo.mapper.UsersMapper;
 import com.santander.exceptions.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,6 @@ public class UserController {
 
     @PostMapping("/user")
     public ResponseEntity<StatusDto> createUser(@RequestBody UserDto userDto){
-        return new ResponseEntity<>(userService.createUser(userDto), HttpStatus.OK);
+        return new ResponseEntity<>(userService.createUser(UsersMapper.dtoToUser(userDto)), HttpStatus.OK);
     }
 }

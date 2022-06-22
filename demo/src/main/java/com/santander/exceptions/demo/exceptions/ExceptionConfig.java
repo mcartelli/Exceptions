@@ -41,4 +41,10 @@ public class ExceptionConfig {
         return new StatusDto(e.getMessage(),404);
     }
 
+    @ExceptionHandler(EmailException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public StatusDto handleNoConectionExceptions(EmailException e){
+        return new StatusDto(e.getMessage(),400);
+    }
+
 }
